@@ -6,7 +6,7 @@ kin la, tenpo pini la, [mi pali e ilo sama](https://github.com/AlbeyAmakiir/tenp
 
 ## pali
 wile:
-* nim ([lipu ona](https://nim-lang.org/))
+* nim (tenpo ni: 1.4.8)([lipu ona](https://nim-lang.org/))
 
 pali e ilo: `nim c tenpo.nim`
 pali e ilo e alasa pona ilo: `nim c tenpoTest.nim`
@@ -39,7 +39,7 @@ Based also on my [previous attempt](https://github.com/AlbeyAmakiir/tenpo-pi-tok
 
 ## Building
 Requirements:
-* nim ([Website](https://nim-lang.org/))
+* nim (Currently 1.4.8)([Website](https://nim-lang.org/))
 
 Build: `nim c tenpo.nim`
 Build with tests: `nim c tenpoTest.nim`
