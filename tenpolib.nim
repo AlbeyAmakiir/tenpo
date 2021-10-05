@@ -146,12 +146,5 @@ proc timeSinceStart(time: DateTime): Duration = time - timeBegin
 proc tenpoDateSinceTime(time: DateTime): TenpoDate = tenpoOpen + timeSinceStart(time)
 
 
-proc outputTenpo(tenpo: TenpoDate, flags: bool = false) =
-  echo "tenpo sike  ", $tenpo.sike
-  echo "tenpo mun   ", monthName(tenpo.mun)
-  if flags:
-    echo "tenpo suno  ", $tenpo.suno
-
-
 
 
