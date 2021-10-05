@@ -16,9 +16,9 @@ pali en alasa pona: `nim c -r tenpoTest.nim`
 
 pona ilo li lukin sama ni:
 ```
----------------------
-| Testing Tenpo.nim |
----------------------
+------------------------
+| Testing Tenpolib.nim |
+------------------------
 Test yearHasNamako: Passed.
 Test monthName: Passed.
 Test daysInYear: Passed.
@@ -27,7 +27,25 @@ Test daysInYear: Passed.
 taso, ona li suli.
 
 ## open
-tenpo ni la, ona li ken ala open.
+```
+$ ./tenpo
+tenpo sike  20
+tenpo mun   Pipi
+```
+```
+$ ./tenpo --help
+tenpo pi toki pona
+Outputs the current date and/or time in toki pona
+Usage: tenpo [flags]
+
+Flags:
+  -h, --help     this helptext
+  -v, --version  version info
+  -s             include day number
+  -o             one-line output
+
+v: 0.1-alpha
+```
 
 ---
 
@@ -49,9 +67,9 @@ Build with tests and immediately run them: `nim c -r tenpoTest.nim`
 
 Expected output:
 ```
----------------------
-| Testing Tenpo.nim |
----------------------
+------------------------
+| Testing Tenpolib.nim |
+------------------------
 Test yearHasNamako: Passed.
 Test monthName: Passed.
 Test daysInYear: Passed.
@@ -60,4 +78,22 @@ Test daysInYear: Passed.
 etc.
 
 ## Usage
-Can not be run at this stage.
+```
+$ ./tenpo
+tenpo sike  20
+tenpo mun   Pipi
+```
+```
+$ ./tenpo --help
+tenpo pi toki pona
+Outputs the current date and/or time in toki pona
+Usage: tenpo [flags]
+
+Flags:
+  -h, --help     this helptext
+  -v, --version  version info
+  -s             include day number
+  -o             one-line output
+
+v: 0.1-alpha
+```
