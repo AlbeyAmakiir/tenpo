@@ -2,7 +2,7 @@
 Calendar and clock for toki pona
 By Albey Amakiir, 2021 ]#
 
-import times#, math
+import lonlat, times
 
 type
   SikeCycleRange = range[0..7]
@@ -17,6 +17,7 @@ type
   TenpoFormatError = object of ValueError
 
 const
+  secondsPerDay = 86400
   sunoPerCycle = 2922
   namakoYears = [1, 4, 6, -2, -4, -7]
   monthNames = ["Wan", "Kon", "Seli", "Ma", "Telo", "Mama",
@@ -36,6 +37,13 @@ let
   # The nearest full degree of longitude closest to sunset at 0 latitude is -108.
   # Or, more accurately, -107.99
   centerLongitude = -107.99
+  datelineLongitude = centerLongitude + 180.0
+
+proc alterLonByDateline(longitude: float): float =
+  if longitude > datelineLongitude: longitude - 360.0
+  else: longitude
+proc durationModifierByLon(longitude: float): Duration =
+  initDuration(seconds = toInt(secondsPerDay / 360.0 * longitude.alterLonByDateline))
 
 func yearHasNamako(year: int): bool = (year mod 8) in namakoYears
 func monthName(month: MunRange): string = monthNames[month - 1]

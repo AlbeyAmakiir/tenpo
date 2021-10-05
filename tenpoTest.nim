@@ -14,6 +14,20 @@ onFailedAssert(msg):
   passed = false
   echo msg
 
+
+proc testDurationModifierByLon() =
+  passed = true
+  assert(durationModifierByLon(0.0).inSeconds == 0)
+  assert(durationModifierByLon(10.0).inSeconds == secondsPerDay div 36)
+  assert(durationModifierByLon(-10.0).inSeconds == secondsPerDay div -36)
+  assert(durationModifierByLon(centerLongitude).inSeconds ==
+      toInt(secondsPerDay / 360 * centerLongitude))
+  assert(durationModifierByLon(datelineLongitude - 1).inSeconds ==
+      toInt(secondsPerDay / 360 * (datelineLongitude - 1)))
+  assert(durationModifierByLon(datelineLongitude + 1).inSeconds ==
+      toInt(secondsPerDay / 360 * (datelineLongitude - 359)))
+  echo "Test durationModifierByLon: ", if passed: passText else: failText
+
 proc testYearHasNamako() =
   passed = true
   for i in countup(0, 8*8, 8):
@@ -230,6 +244,8 @@ proc testTemplate() =
   echo "Test template: ", if passed: passText else: failText
 
 
+testDurationModifierByLon()
+
 testYearHasNamako()
 testMonthName()
 testDaysInYear()
@@ -245,9 +261,6 @@ testTenpoMinusDays()
 
 testTenpoDateSinceTime()
 echo ""
-
-echo $getTime().utc()
-outputTenpo(getTime().utc().tenpoDateSinceTime(), true)
 
 
 

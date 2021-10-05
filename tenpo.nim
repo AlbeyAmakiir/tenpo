@@ -31,7 +31,6 @@ const
       -o             pana lon linja wan
     """
 
-
 proc outputVersionInfo(inclTitle: bool = true) =
   if inclTitle:
     echo "tenpo pi toki pona"
@@ -64,6 +63,7 @@ proc main() =
 
   var inclSuno = false
   var brief = false
+  var currentLon = 0.0
 
   if paramStr(1).startsWith("--"):
     let arg = paramStr(1)[2 .. ^1]
@@ -96,10 +96,19 @@ proc main() =
         outputHelp()
         return
 
+  if paramCount() > 1:
+    try:
+      currentLon = paramStr(2).parseFloat()
+    except ValueError:
+      echo "Longitude invalid"
+      return
+
+  let timeInUTC = getTime().utc() + durationModifierByLon(currentLon)
+
   if brief:
-    outputTenpoBrief(getTime().utc().tenpoDateSinceTime(), "/", inclSuno)
+    outputTenpoBrief(timeInUTC.tenpoDateSinceTime(), "/", inclSuno)
   else:
-    outputTenpo(getTime().utc().tenpoDateSinceTime(), inclSuno)
+    outputTenpo(timeInUTC.tenpoDateSinceTime(), inclSuno)
 
 
 main()
