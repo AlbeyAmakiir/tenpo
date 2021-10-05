@@ -1,6 +1,6 @@
 #[ tenpo pi toki pona
 Calendar and clock for toki pona
-By Albey Amakiir ]#
+By Albey Amakiir, 2021 ]#
 
 import times#, math
 
@@ -25,9 +25,17 @@ const
   tenpoOpen = TenpoDate(sike: 0, mun: 1, suno: 1)
 
 let
-  # When we have lon-lat, we can work out the actual time. It won't be let.
+  # Sunset is defined at the moment the top edge of sun meets the horizon.
+  # This is an inaccuracy that will likely still be used near the poles after lonlat.
   sunset = 18.hours
-  timeBegin = times.initDateTime(26, mMar, 2001, 0, 0, 0, utc()) + sunset
+  # 25-03-2001 at 1:21:37am UTC+0, as retrieved from
+  # https://www.mooncalc.org/#/0,0,2/2001.03.25/01:21/1/3
+  # (claims next new moon in 37 seconds)
+  newMoonBegin = times.initDateTime(25, mMar, 2001, 1, 21, 37, utc())
+  timeBegin = newMoonBegin + sunset
+  # The nearest full degree of longitude closest to sunset at 0 latitude is -108.
+  # Or, more accurately, -107.99
+  centerLongitude = -107.99
 
 func yearHasNamako(year: int): bool = (year mod 8) in namakoYears
 func monthName(month: MunRange): string = monthNames[month - 1]

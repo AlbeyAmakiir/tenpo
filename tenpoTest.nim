@@ -1,8 +1,8 @@
-include tenpo
+include tenpolib
 
-echo "\n---------------------"
-echo "| Testing Tenpo.nim |"
-echo "---------------------"
+echo "\n------------------------"
+echo "| Testing Tenpolib.nim |"
+echo "------------------------"
 
 const
   passText = "Passed."
