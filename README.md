@@ -33,16 +33,21 @@ tenpo sike  20
 tenpo mun   Pipi
 ```
 ```
+$ ./tenpo -sol 140.5
+20/Pipi/3
+```
+```
 $ ./tenpo --help
 tenpo pi toki pona
 Outputs the current date and/or time in toki pona
-Usage: tenpo [flags]
+Usage: tenpo [flags [longitude]]
 
 Flags:
   -h, --help     this helptext
   -v, --version  version info
   -s             include day number
   -o             one-line output
+  -l             expects longitude to follow flags
 
 v: 0.1-alpha
 ```
@@ -84,16 +89,21 @@ tenpo sike  20
 tenpo mun   Pipi
 ```
 ```
+$ ./tenpo -sol 140.5
+20/Pipi/3
+```
+```
 $ ./tenpo --help
 tenpo pi toki pona
 Outputs the current date and/or time in toki pona
-Usage: tenpo [flags]
+Usage: tenpo [flags [longitude]]
 
 Flags:
   -h, --help     this helptext
   -v, --version  version info
   -s             include day number
   -o             one-line output
+  -l             expects longitude to follow flags
 
 v: 0.1-alpha
 ```

@@ -11,24 +11,14 @@ const
   outputHelpEnglish = dedent """
     tenpo pi toki pona
     Outputs the current date and/or time in toki pona
-    Usage: tenpo [flags]
+    Usage: tenpo [flags [longitude]]
 
     Flags:
       -h, --help     this helptext
       -v, --version  version info
       -s             include day number
       -o             one-line output
-    """
-  outputHelpTokiPona = dedent """
-    tenpo pi toki pona
-    ona li pana e sitelen tenpo pi toki pona
-    kepeken: tenpo [ante]
-
-    ante ale:
-      -h, --help     sitelen awen ni
-      -v, --version  nanpa pi nasin mi
-      -s             tenpo suno kin
-      -o             pana lon linja wan
+      -l             expects longitude to follow flags
     """
 
 proc outputVersionInfo(inclTitle: bool = true) =
@@ -63,6 +53,7 @@ proc main() =
 
   var inclSuno = false
   var brief = false
+  var customLon = false
   var currentLon = 0.0
 
   if paramStr(1).startsWith("--"):
@@ -91,14 +82,25 @@ proc main() =
         inclSuno = true
       of 'o':
         brief = true
+      of 'l':
+        if paramCount() == 1:
+          echo "Argument -l expects a longitude\n"
+          outputHelp()
+          return
+        customLon = true
       else:
         echo "Argument " & ch & " not recognised\n"
         outputHelp()
         return
 
   if paramCount() > 1:
+    if not customLon:
+      echo "Too many arguments\n"
+      outputHelp()
+      return
+
     try:
-      currentLon = paramStr(2).parseFloat()
+      currentLon = paramStr(2).parseFloat().normaliseLongitude()
     except ValueError:
       echo "Longitude invalid"
       return
