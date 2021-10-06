@@ -52,6 +52,9 @@ Flags:
 v: 0.1-alpha
 ```
 
+## tenpo li ante tan seme?
+ilo tenpo ante pi toki pona li pana e tenpo ante. taso, tenpo open pi ilo ni li ante: 2001/03/25 01:21:37 UTC+0. [lipu ni](https://github.com/AlbeyAmakiir/tenpo/wiki/nasin-ni-li-seme%3F#tenpo-sike) li jo e sona mute.
+
 ---
 
 # tenpo
@@ -107,3 +110,6 @@ Flags:
 
 v: 0.1-alpha
 ```
+
+## Why is the date wrong?
+If you're comparing to other toki pona calendar tools, note that this one uses a different dateline and slightly different origin time: 2001/03/25 01:21:37 UTC+0. More details [in the wiki](https://github.com/AlbeyAmakiir/tenpo/wiki/How-toki-pona-time-works#calendar).
