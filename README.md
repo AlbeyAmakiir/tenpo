@@ -8,36 +8,32 @@ kin la, tenpo pini la, [mi pali e ilo sama](https://github.com/AlbeyAmakiir/tenp
 wile:
 * nim (tenpo ni: 1.4.8)([lipu ona](https://nim-lang.org/))
 
-pali e ilo: `nim c tenpo.nim`
-pali e ilo e alasa pona ilo: `nim c tenpoTest.nim`
+pali e ilo: `./build.sh`
 
 ## alasa pona
-pali en alasa pona: `nim c -r tenpoTest.nim`
+pali en alasa pona: `./test.sh`
 
 pona ilo li lukin sama ni:
 ```
-------------------------
-| Testing Tenpolib.nim |
-------------------------
-Test yearHasNamako: Passed.
-Test monthName: Passed.
-Test daysInYear: Passed.
+PASS: tests/tenpolib/tCreateValidTenpo.nim C                       ( 0.67 sec)
+PASS: tests/tenpolib/tDaysInMonth.nim C                            ( 0.67 sec)
+PASS: tests/tenpolib/tDaysInYear.nim C                             ( 0.67 sec)
 ...
 ```
 taso, ona li suli.
 
 ## open
 ```
-$ ./tenpo
+$ ./build/tenpo
 tenpo sike  20
 tenpo mun   Pipi
 ```
 ```
-$ ./tenpo -sol 140.5
+$ ./build/tenpo -sol 140.5
 20/Pipi/3
 ```
 ```
-$ ./tenpo --help
+$ ./build/tenpo --help
 tenpo pi toki pona
 Outputs the current date and/or time in toki pona
 Usage: tenpo [flags [longitude]]
@@ -67,36 +63,32 @@ Based also on my [previous attempt](https://github.com/AlbeyAmakiir/tenpo-pi-tok
 Requirements:
 * nim (Currently 1.4.8)([Website](https://nim-lang.org/))
 
-Build: `nim c tenpo.nim`
-Build with tests: `nim c tenpoTest.nim`
+Build: `./build.sh`
 
 ## Testing
-Build with tests and immediately run them: `nim c -r tenpoTest.nim`
+Build with tests and immediately run them: `./test.sh`
 
 Expected output:
 ```
-------------------------
-| Testing Tenpolib.nim |
-------------------------
-Test yearHasNamako: Passed.
-Test monthName: Passed.
-Test daysInYear: Passed.
+PASS: tests/tenpolib/tCreateValidTenpo.nim C                       ( 0.67 sec)
+PASS: tests/tenpolib/tDaysInMonth.nim C                            ( 0.67 sec)
+PASS: tests/tenpolib/tDaysInYear.nim C                             ( 0.67 sec)
 ...
 ```
 etc.
 
 ## Usage
 ```
-$ ./tenpo
+$ ./build/tenpo
 tenpo sike  20
 tenpo mun   Pipi
 ```
 ```
-$ ./tenpo -sol 140.5
+$ ./build/tenpo -sol 140.5
 20/Pipi/3
 ```
 ```
-$ ./tenpo --help
+$ ./build/tenpo --help
 tenpo pi toki pona
 Outputs the current date and/or time in toki pona
 Usage: tenpo [flags [longitude]]

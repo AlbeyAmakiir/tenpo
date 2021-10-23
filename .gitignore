@@ -1,6 +1,11 @@
 nimcache/
 nimblecache/
 htmldocs/
+testresults/
+build/
 
-tenpoTest
-tenpo
+*.swp
+
+tests/**/*
+!tests/**/
+!tests/**/*.nim

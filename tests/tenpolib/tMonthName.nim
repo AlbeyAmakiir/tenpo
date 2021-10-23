@@ -1,0 +1,15 @@
+include ../../src/tenpolib
+
+doAssert(monthName(1) == "Wan")
+doAssert(monthName(2) == "Kon")
+doAssert(monthName(3) == "Seli")
+doAssert(monthName(4) == "Ma")
+doAssert(monthName(5) == "Telo")
+doAssert(monthName(6) == "Mama")
+doAssert(monthName(7) == "Kasi")
+doAssert(monthName(8) == "Pipi")
+doAssert(monthName(9) == "Kala")
+doAssert(monthName(10) == "Akesi")
+doAssert(monthName(11) == "Waso")
+doAssert(monthName(12) == "Soweli")
+doAssert(monthName(13) == "Namako")
