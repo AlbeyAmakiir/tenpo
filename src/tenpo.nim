@@ -2,34 +2,24 @@
 Calendar and clock for toki pona
 By Albey Amakiir, 2021 ]#
 
-import os, strutils
+import os, strutils, docopt
 include tenpolib
 
-
 const
-  version = "0.1-alpha"
+  versionStr = "0.1-alpha"
   outputHelpEnglish = dedent """
     tenpo pi toki pona
     Outputs the current date and/or time in toki pona
-    Usage: tenpo [flags [longitude]]
 
-    Flags:
-      -h, --help     this helptext
-      -v, --version  version info
+    Usage:
+      tenpo [options] [<longitude>]
+
+    Options:
+      -h --help      this helptext
+      -v --version   version info
       -s             include day number
       -o             one-line output
-      -l             expects longitude to follow flags
     """
-
-proc outputVersionInfo(inclTitle: bool = true) =
-  if inclTitle:
-    echo "tenpo pi toki pona"
-  echo "v: " & version
-
-
-proc outputHelp() =
-  echo outputHelpEnglish
-  outputVersionInfo(false)
 
 
 proc outputTenpo(tenpo: TenpoDate, inclSuno: bool = false) =
@@ -47,60 +37,15 @@ proc outputTenpoBrief(tenpo: TenpoDate, separator: string, inclSuno: bool = fals
 
 
 proc main() =
-  if paramCount() < 1:
-    outputTenpo(getTime().utc().tenpoDateSinceTime(), false)
-    return
+  let args = docopt(outputHelpEnglish, version = versionStr)
 
-  var inclSuno = false
-  var brief = false
-  var customLon = false
+  var inclSuno = args["-s"]
+  var brief = args["-o"]
+  var customLon = args["<longitude>"]
   var currentLon = 0.0
-
-  if paramStr(1).startsWith("--"):
-    let arg = paramStr(1)[2 .. ^1]
-    case arg
-    of "help":
-      outputHelp()
-    of "version":
-      outputVersionInfo()
-    else:
-      echo "Argument " & arg & " not recognised\n"
-      outputHelp()
-    return
-
-  if paramStr(1).startsWith("-"):
-    let args = paramStr(1)[1 .. ^1]
-    for ch in args:
-      case ch
-      of 'h':
-        outputHelp()
-        return
-      of 'v':
-        outputVersionInfo()
-        return
-      of 's':
-        inclSuno = true
-      of 'o':
-        brief = true
-      of 'l':
-        if paramCount() == 1:
-          echo "Argument -l expects a longitude\n"
-          outputHelp()
-          return
-        customLon = true
-      else:
-        echo "Argument " & ch & " not recognised\n"
-        outputHelp()
-        return
-
-  if paramCount() > 1:
-    if not customLon:
-      echo "Too many arguments\n"
-      outputHelp()
-      return
-
+  if customLon:
     try:
-      currentLon = paramStr(2).parseFloat().normaliseLongitude()
+      currentLon = parseFloat($args["<longitude>"]).normaliseLongitude()
     except ValueError:
       echo "Longitude invalid"
       return

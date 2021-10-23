@@ -7,6 +7,7 @@ kin la, tenpo pini la, [mi pali e ilo sama](https://github.com/AlbeyAmakiir/tenp
 ## pali
 wile:
 * nim (tenpo ni: 1.4.8)([lipu ona](https://nim-lang.org/))
+* docopt.nim (tenpo ni: 0.6.7)([lipu ona](https://github.com/docopt/docopt.nim))
 
 pali e ilo: `./build.sh`
 
@@ -29,23 +30,22 @@ tenpo sike  20
 tenpo mun   Pipi
 ```
 ```
-$ ./build/tenpo -sol 140.5
+$ ./build/tenpo -so 140.5
 20/Pipi/3
 ```
 ```
-$ ./build/tenpo --help
+$ ./build/tenpo -h
 tenpo pi toki pona
 Outputs the current date and/or time in toki pona
-Usage: tenpo [flags [longitude]]
 
-Flags:
-  -h, --help     this helptext
-  -v, --version  version info
+Usage:
+  tenpo [options] [<longitude>]
+
+Options:
+  -h --help      this helptext
+  -v --version   version info
   -s             include day number
   -o             one-line output
-  -l             expects longitude to follow flags
-
-v: 0.1-alpha
 ```
 
 ## tenpo li ante tan seme?
@@ -62,6 +62,7 @@ Based also on my [previous attempt](https://github.com/AlbeyAmakiir/tenpo-pi-tok
 ## Building
 Requirements:
 * nim (Currently 1.4.8)([Website](https://nim-lang.org/))
+* docopt.nim (Currently 0.6.7)([Website](https://github.com/docopt/docopt.nim))
 
 Build: `./build.sh`
 
@@ -84,23 +85,22 @@ tenpo sike  20
 tenpo mun   Pipi
 ```
 ```
-$ ./build/tenpo -sol 140.5
+$ ./build/tenpo -so 140.5
 20/Pipi/3
 ```
 ```
-$ ./build/tenpo --help
+$ ./build/tenpo -h
 tenpo pi toki pona
 Outputs the current date and/or time in toki pona
-Usage: tenpo [flags [longitude]]
 
-Flags:
-  -h, --help     this helptext
-  -v, --version  version info
+Usage:
+  tenpo [options] [<longitude>]
+
+Options:
+  -h --help      this helptext
+  -v --version   version info
   -s             include day number
   -o             one-line output
-  -l             expects longitude to follow flags
-
-v: 0.1-alpha
 ```
 
 ## Why is the date wrong?
